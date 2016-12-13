@@ -5,6 +5,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 
+import { UserProvider } from '../providers/user-provider/user-provider';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -20,6 +22,6 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     HomePage,
     TutorialPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, UserProvider]
 })
 export class AppModule {}
