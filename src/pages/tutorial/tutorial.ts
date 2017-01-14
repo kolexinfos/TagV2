@@ -26,24 +26,24 @@ export class TutorialPage {
   constructor(public platform: Platform, public navCtrl: NavController, public menu: MenuController, public userProvider: UserProvider) {
     this.slides = [
       {
-        title: 'Welcome to <b>ErrandHQ</b>',
-        description: '<b>ErrandHQ helps you get stuff done</b>',
-        image: 'img/logo.png',
+        title: 'Welcome to <b>Tag</b>',
+        description: '<b>The number one car sharing app in the whole of sub-saharan Africa</b>',
+        image: 'img/car.jpg',
       },
       {
-        title: 'This is how <b>ErrandHQ</b> Works',
-        description: 'You want to get stuff done but can not move around?',
-        image: 'img/logo.png',
+        title: 'This is how <b>Tag</b> Works',
+        description: 'You can either make available your car for users to <span><i>Tag</i></span> along or you join others in your network?',
+        image: 'img/car.jpg',
       },
       {
         title: 'Then what happens next?',
         description: 'Tell us you <i>Need Help</i>',
-        image: 'img/logo.png',
+        image: 'img/car.jpg',
       },
       {
         title: 'Need some tips to stay head on schedule??',
         description: 'Gain a <i>heads-up</i> by inviting friends</b>.',
-        image: 'img/logo.png',
+        image: 'img/car.jpg',
       }
     ];
 
