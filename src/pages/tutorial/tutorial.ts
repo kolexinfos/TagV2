@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-
 import { MenuController, NavController, Platform } from 'ionic-angular';
+import { Facebook, NativeStorage } from 'ionic-native';
 
-import { SignupPage } from '../signup/signup';
+import { HomePage } from '../home/home';
+
+
 
 import { UserProvider } from '../../providers/user-provider/user-provider';
 
@@ -61,7 +63,7 @@ export class TutorialPage {
 
   startApp() {
 
-    this.navCtrl.setRoot(SignupPage);
+    //this.navCtrl.setRoot(SignupPage);
   }
 
   onSlideChangeStart(slider) {
@@ -80,6 +82,39 @@ export class TutorialPage {
   }
 
   gotoHome() {
-    this.navCtrl.push(SignupPage);
+    //this.navCtrl.push(SignupPage);
+  }
+
+  doFbLogin(){
+    let permissions = new Array<string>();
+    let nav = this.navCtrl;
+    //the permissions your facebook app needs from the user
+    permissions = ["public_profile"];
+
+    Facebook.login(permissions)
+    .then(function(response){
+      let userId = response.authResponse.userID;
+      let params = new Array<string>();
+
+      //Getting name and gender properties
+      Facebook.api("/me?fields=name,gender", params)
+      .then(function(user) {
+        user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
+        //now we have the users info, let's save it in the NativeStorage
+        NativeStorage.setItem('user',
+        {
+          name: user.name,
+          gender: user.gender,
+          picture: user.picture
+        })
+        .then(function(){
+          nav.push(HomePage);
+        }, function (error) {
+          console.log(error);
+        })
+      })
+    }, function(error){
+      console.log(error);
+    });
   }
 }

@@ -32,4 +32,5 @@
         <variable name="APP_ID" value="949518908519001" />
         <variable name="APP_NAME" value="tag" />
     </plugin>
+    <plugin name="cordova-plugin-nativestorage" spec="~2.2.0" />
 </widget>
